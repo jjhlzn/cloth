@@ -1,0 +1,75 @@
+#leftmenu {
+  width: 600px;
+}
+
+#mainMenu {
+  position: absolute;
+  z-index: 99;
+  background-color: #5b5b5b;
+  color: white;
+  width: 180px;
+  text-align: center;
+  float: left;
+}
+
+#mainMenuPlaceHolder {
+  width: 180px;
+  height: 20px;
+  float: left;
+}
+
+.menuItemHeader {
+  background-color: red;
+  height: 40px;
+  border: 1px red solid;
+  font-size: 16px;
+}
+
+.menuItem {
+  height: 40px;
+  border: 1px #5b5b5b solid;
+  font-size: 14px;
+}
+
+.menuItemSelected {
+  background-color: #F9F9F9;
+  color: black;
+  border: 1px #F9F9F9 solid;
+}
+
+.menuItemHeader p {
+  margin-top: 10px;
+}
+
+.menuItem p {
+  margin-top: 10px;
+}
+
+.menuItemCombine {
+
+}
+
+#childMenu {
+  position: absolute;
+  z-index: 99;
+  float: left;
+  display: none;
+  background-color: #F9F9F9;
+  color: black;
+  width: 600px;
+  height: 420px;
+  text-align: center;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+#childMenu p {
+  width: 200px;
+  margin: auto;
+}
+
+#childMenu a {
+  text-decoration:none;
+  color: black;
+  margin-right: 20px; 
+}
