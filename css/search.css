@@ -1,9 +1,13 @@
 #searchContainer {
   width: 1180px;
-  margin-top: 5px;
+  margin-top: 8px;
   margin-bottom: 5px;
   border-bottom: 1px solid lightgray;
   
+}
+
+#seletedValuesDiv {
+  margin-top: 8px;
 }
 
 .searchLine {
@@ -75,11 +79,30 @@ a.s_btn {
   color: black;
   /* font-weight: lighter; */
   font-size: 13px;
+  border: 1px lightgray solid;
+}
+
+a.s_btn:hover {
+  color: red;
+  border: 1px red solid;
+}
+
+#seletedValuesDiv .s_btn {
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 6px;
 }
 
 .s_btn_container {
-  border: 1px lightgray solid;
-  width: 50px;
+  
+  padding-top: 2px;
+  padding-left: 5px;
+  padding-right: 1px;
+  height: 20px;
+}
+
+.s_btn_container_more {
+    width: 50px;
   padding-top: 2px;
   padding-left: 5px;
   padding-right: 1px;
@@ -94,5 +117,6 @@ a.s_btn {
   padding-top: 2px;
   width: 16px;
   height: 16px;
+  color: red;
 }
 /***************************************************************************/

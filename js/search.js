@@ -1,26 +1,5 @@
 function makeSearchField(searchFieldName, searchValues) {
-  /*
-  <div class="searchLine">
-        <div class="search_field"> 成分： </div>
-        <div class="search_values">
-          <div class="search_values_line">
-            <a href="#" class="s_item">涤纶</a> <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#"
-              class="s_item">锦纶</a>
-            <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#"
-              class="s_item">锦纶</a>
-          </div>
-        </div>
-        <div class="search_buttons">
-          <a href="#" class="s_btn">
-            <div class="s_btn_container">
-              <div class="s_btn_name" id="moreButton">更多</div>&nbsp;
-              <img class="s_btn_img" src="images/down-arrow.png" />
-            </div>
-          </a>
-        </div>
-      </div>
-  */
-  console.log(searchValues)
+  //console.log(searchValues)
   var searchValuesDiv = $('<div>', {'class': 'search_values'});
   var groups = _.chunk(searchValues, 9);
   for(var i = 0; i < groups.length; i++) {
@@ -35,7 +14,7 @@ function makeSearchField(searchFieldName, searchValues) {
   var searchButtonsDiv = $('<div>', {'class': 'search_buttons'});
   if (groups.length > 1) {
     var searchButton = $('<a>', {'href': '#', 'class': 's_btn'})
-                        .append($('<div>', {'class': 's_btn_container'})
+                        .append($('<div>', {'class': 's_btn_container_more'})
                                   .append($('<div>', {'class': 's_btn_name'}).html("更多&nbsp;"))
                                   .append($('<img>',{'class': 's_btn_img', 'src': 'images/down-arrow.png'})));
     searchButtonsDiv.append(searchButton);                    
@@ -49,16 +28,26 @@ function makeSearchField(searchFieldName, searchValues) {
   return searchLine;
 }
 
+function addSearchValue(searchFieldName, selectValues) {
+
+}
 
 $(document).ready(function(){
+
+  $('#test').width($('#name').width() + 23)
+
+  $('#seletedValuesDiv .s_btn_container').each(function (i, item) {
+    var span =  $($(item).children()[0]).children()[0];
+    $(item).width( $(span).width() + 23 );
+  });
+
+
   var searchFields = [
     {
       name: '分类',
       values: ['纬编单面', '纬编双面', '经编', '梭织平纹', '梭织斜纹', '梭织缎纹']
     },
     {
-
-
       name: '成分',
       values: '人棉 羊毛 亚麻 莫代尔 人造丝 真丝 腈纶 天丝 铜氨 苎麻 醋酯纤维 竹纤维 金银纱 索罗娜 棉  再生涤  有机棉'.split(/\s+/)
     },
@@ -89,12 +78,17 @@ $(document).ready(function(){
 
   $('#searchContainer').append($('<div>', {'class': 'searchLine'}));
 
-  $('.s_btn').click(function() {
+  $('#searchContainer .s_btn').click(function() {
+    console.log(this);
     //console.log($($(this).parent().parent().children()[1]).children())
+    var btnTxtDiv = $(this).children().first().children().first();
+    var btnImg = $(this).children().first().children()[1];
+    console.log(btnTxtDiv)
+
     var searchName = $(this).parent().parent().children()[0];
     var searchValues = $(this).parent().parent().children()[1];
     var lines = $($(this).parent().parent().children()[1]).children();
-    if ($(this).hasClass('expanded')) {
+    if ($(this).hasClass('expanded')) {  //已经展开了
       $(this).removeClass('expanded')
       for(var i = 0; i < lines.length; i++) {
         if (i == 0) {
@@ -106,6 +100,8 @@ $(document).ready(function(){
 
       //设置search_field的高度
       $(searchName).height(28);
+      btnTxtDiv.html('更多&nbsp;');
+      btnImg.src = 'images/down-arrow.png';
     } else {
       $(this).addClass('expanded')
       Array(lines).forEach(item => {
@@ -114,8 +110,20 @@ $(document).ready(function(){
 
       //设置search_field的高度
       $(searchName).height($(searchValues).height());
+      btnTxtDiv.html('收起&nbsp;');
+      btnImg.src = 'images/up-arrow.png';
     }
     
+  });
+
+  $('#searchContainer .s_item').click(function() {
+    //console.log('item click');
+    var selectValue = $(this).html();
+    console.log(selectValue);
+    var searchField = $(this).parent().parent().parent().children().first().html();
+    searchField = searchField.substr(0, searchField.length - 1)
+    console.log(searchField)
+    addSearchValue(searchField, [selectValue])
   });
 
 });
