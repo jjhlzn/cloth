@@ -204,39 +204,12 @@ p#secondLine {
 } 
 
 
-#rightImage {
-  width: 1020px;
-  height: 800px;
-  margin: 0px;
-  padding: 0px;
-}
-
 #content {
   margin-top: 10px;
   width: 1200px;
 }
 
-#searchImage {
-  margin-left: 10px;
-  width: 1200px;
-}
 
-#content .clothDiv {
-  padding-right: 20px;
-  width: 180px;
-  height: 240px;
-  float: left;
-}
-
-#content .clothDiv p {
-  text-align: center;
-  font-size: 12px;
-}
-
-#content .clothImage {
-  width: 180px;
-  height: 180px;
-}
 
 .divLine {
   /* margin-left: 200px; */

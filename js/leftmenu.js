@@ -13,7 +13,6 @@ function makeChildMenu(typeName) {
   if (children) {
     children.forEach(function(item){
       var menu = $("<a>", {"href": "./index.html"}).html(item);
-      
       menuDiv.append(menu)
     });
   } else {

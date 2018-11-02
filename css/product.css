@@ -1,0 +1,81 @@
+#content table {
+  clear: both;
+  width: 900px;
+  margin: auto;
+  border: 1px solid #bfbfbf;
+  padding: 0px;
+  border-collapse: collapse;
+}
+
+#imagesDiv {
+  clear: both;
+  width: 900px;
+  margin: auto;
+}
+
+#content table tr {
+  padding: 0px;
+  margin: 0px;
+  
+}
+
+#content table td {
+
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 14px;
+   border: 1px solid #bfbfbf;
+  border-collapse: collapse; 
+}
+
+.field {
+  width: 150px;
+  background-color: #F5F5F5;
+  color: black;
+  font-weight: 500;
+  
+}
+
+.fieldValue {
+  width: 300px;
+  color: #1a1a1a;
+
+}
+
+#productDesc {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+
+
+#content .divLine {
+  clear: both;
+}
+
+#content .images {
+  text-align: center;
+}
+
+#content .clothDiv {
+  padding-right: 45px;
+  width: 180px;
+  height: 200px;
+  float: left;
+}
+
+#content .clothDiv p {
+  text-align: center;
+  font-size: 14px;
+}
+
+#content .clothImage {
+  display: block;
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}

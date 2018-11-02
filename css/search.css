@@ -1,0 +1,98 @@
+#searchContainer {
+  width: 1180px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid lightgray;
+  
+}
+
+.searchLine {
+  clear: both;
+}
+
+.search_field {
+  float: left;
+  width: 130px;
+  background-color: #F0F0F0;
+  font-size: 13px;
+  color: #262626;
+  font: bold;
+  padding-left: 15px;
+  padding-top: 10px;
+  height: 28px;
+
+  border-top: 1px solid lightgray;
+}
+
+.search_values {
+  padding-left: 15px;
+  width: 900px;
+  float: left;
+
+  border-top: 1px solid lightgray;
+}
+
+.search_buttons {
+  padding-top: 6px;
+  padding-left: 10px;
+  width: 110px;
+  float: left;
+  height: 28px;
+
+  border-top: 1px solid lightgray;
+}
+
+
+/************************************* 选择的值 ********************************/
+a.s_item {
+  text-decoration: none
+}
+
+a.s_item:hover {  color: red } 
+
+a.s_item {
+  float: left;
+  display: block;
+  /* background-color: red; */
+  color: #2464a2;
+  font-size: 13px;
+  width: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.search_values_line {
+  clear: both;
+  height: 28px;
+}
+
+/*****************************************************************************/
+
+
+/********************** 更多 多选  这些按钮的样式 ********************************/
+a.s_btn {
+  text-decoration: none;
+  color: black;
+  /* font-weight: lighter; */
+  font-size: 13px;
+}
+
+.s_btn_container {
+  border: 1px lightgray solid;
+  width: 50px;
+  padding-top: 2px;
+  padding-left: 5px;
+  padding-right: 1px;
+  height: 20px;
+}
+
+.s_btn_name{
+  float: left;
+}
+
+.s_btn_img {
+  padding-top: 2px;
+  width: 16px;
+  height: 16px;
+}
+/***************************************************************************/
