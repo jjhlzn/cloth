@@ -20,3 +20,10 @@
   /* margin-left: 200px; */
   clear: both;
 }
+
+#paginationDiv {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  float: right;
+  margin-right: 15px;
+}

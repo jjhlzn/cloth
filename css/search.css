@@ -1,13 +1,14 @@
 #searchContainer {
   width: 1180px;
   margin-top: 8px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   border-bottom: 1px solid lightgray;
   
 }
 
 #seletedValuesDiv {
   margin-top: 8px;
+  clear: both;
 }
 
 .searchLine {
@@ -16,7 +17,7 @@
 
 .search_field {
   float: left;
-  width: 130px;
+  width: 110px;
   background-color: #F0F0F0;
   font-size: 13px;
   color: #262626;
@@ -39,7 +40,7 @@
 .search_buttons {
   padding-top: 6px;
   padding-left: 10px;
-  width: 110px;
+  width: 130px;
   float: left;
   height: 28px;
 
@@ -48,6 +49,15 @@
 
 
 /************************************* 选择的值 ********************************/
+#searchContainer input[type='checkbox'] {
+  display: block;
+  float: left;
+  margin-top: 11px;
+  margin-right: 2px;
+  width: 16px;
+  height: 16px;
+}
+
 a.s_item {
   text-decoration: none
 }
@@ -60,7 +70,7 @@ a.s_item {
   /* background-color: red; */
   color: #2464a2;
   font-size: 13px;
-  width: 100px;
+  width: 110px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -80,6 +90,16 @@ a.s_btn {
   /* font-weight: lighter; */
   font-size: 13px;
   border: 1px lightgray solid;
+  float: left;
+  margin-right: 7px;
+}
+
+.s_btn_more {
+
+}
+
+.s_btn_multiple_select {
+
 }
 
 a.s_btn:hover {
@@ -88,13 +108,11 @@ a.s_btn:hover {
 }
 
 #seletedValuesDiv .s_btn {
-  float: left;
   margin-right: 30px;
   margin-bottom: 6px;
 }
 
 .s_btn_container {
-  
   padding-top: 2px;
   padding-left: 5px;
   padding-right: 1px;
@@ -102,7 +120,7 @@ a.s_btn:hover {
 }
 
 .s_btn_container_more {
-    width: 50px;
+  width: 50px;
   padding-top: 2px;
   padding-left: 5px;
   padding-right: 1px;
@@ -118,5 +136,7 @@ a.s_btn:hover {
   width: 16px;
   height: 16px;
   color: red;
+  color:white;
+  border: none;
 }
 /***************************************************************************/

@@ -11,6 +11,7 @@
   <link href="css/all.css" rel="stylesheet">
   <link href="css/index.css" rel="stylesheet">
   <link href="css/search.css" rel="stylesheet">
+  <link href="css/pagination.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,60 +42,24 @@
   <div id="contentContainer">
 
     <div id="seletedValuesDiv">
-
+        <!-- 
         <a href="#" class="s_btn">
             <div class="s_btn_container"  id="test">
-              <div class="s_btn_name" id="moreButton"><span id="name">更1111的说法是否发士大夫大师傅多</span></div>&nbsp;<img class="s_btn_img" src="images/close-red.png" />
+              <div class="s_btn_name" id="moreButton"><span id="name">tttt</span></div>&nbsp;<img class="s_btn_img" src="images/close-red.png" />
             </div>
         </a>
+        -->
 
-        <a href="#" class="s_btn">
-            <div class="s_btn_container"  id="test">
-              <div class="s_btn_name" id="moreButton"><span id="name">11111</span></div>&nbsp;<img class="s_btn_img" src="images/down-arrow.png" />
-            </div>
-        </a>
-
-        <a href="#" class="s_btn">
-            <div class="s_btn_container"  id="test">
-              <div class="s_btn_name" id="moreButton"><span id="name">更1111的说法是否发士大夫大师傅多</span></div>&nbsp;<img class="s_btn_img" src="images/down-arrow.png" />
-            </div>
-        </a>
-
-        <a href="#" class="s_btn">
-            <div class="s_btn_container"  id="test">
-              <div class="s_btn_name" id="moreButton"><span id="name">更1111的说法是否发士大夫大师傅多</span></div>&nbsp;<img class="s_btn_img" src="images/down-arrow.png" />
-            </div>
-        </a>
-
-        <a href="#" class="s_btn">
-            <div class="s_btn_container"  id="test">
-              <div class="s_btn_name" id="moreButton"><span id="name">更1111的说法是否发士大夫大师傅多</span></div>&nbsp;<img class="s_btn_img" src="images/down-arrow.png" />
-            </div>
-        </a>
-
-        <a href="#" class="s_btn">
-            <div class="s_btn_container"  id="test">
-              <div class="s_btn_name" id="moreButton"><span id="name">更1111的说法是否发士大夫大师傅多</span></div>&nbsp;<img class="s_btn_img" src="images/down-arrow.png" />
-            </div>
-        </a>
-
-        <a href="#" class="s_btn">
-            <div class="s_btn_container"  id="test">
-              <div class="s_btn_name" id="moreButton"><span id="name">更1111的说法是否发士大夫大师傅多</span></div>&nbsp;<img class="s_btn_img" src="images/down-arrow.png" />
-            </div>
-        </a>
-
-        <div class="searchLine" />
     </div>
     
     <div id="searchContainer">
 
-      <!--
+      <!-- 
       <div class="searchLine">
         <div class="search_field"> 成分： </div>
         <div class="search_values">
           <div class="search_values_line">
-            <a href="#" class="s_item">涤纶</a> <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#"
+            <input type="checkbox" value="涤纶"/> <a href="#" class="s_item">涤纶</a> <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#"
               class="s_item">锦纶</a>
             <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#"
               class="s_item">锦纶</a>
@@ -102,40 +67,14 @@
         </div>
         <div class="search_buttons">
           <a href="#" class="s_btn">
-            <div class="s_btn_container">
+            <div class="s_btn_container_more">
               <div class="s_btn_name" id="moreButton">更多</div>&nbsp;<img class="s_btn_img" src="images/down-arrow.png" />
             </div>
           </a>
         </div>
       </div>
-
-      <div class="searchLine">
-        <div class="search_field"> 成分： </div>
-        <div class="search_values">
-            <div class="search_values_line">
-                <a href="#" class="s_item">涤纶</a> <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#"
-                  class="s_item">锦纶</a>
-                <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#"
-                  class="s_item">锦纶</a>
-              </div>
-              <div class="search_values_line" style="display: none;">
-                <a href="#" class="s_item">涤纶</a> <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#"
-                  class="s_item">锦纶</a>
-                <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#" class="s_item">锦纶</a> <a href="#"
-                  class="s_item">锦纶</a>
-              </div>
-        </div>
-        <div class="search_buttons"> 
-          <a href="#" class="s_btn">
-            <div class="s_btn_container">
-              <div class="s_btn_name">更多</div>&nbsp;<img class="s_btn_img" src="images/down-arrow.png" />
-            </div>
-          </a> 
-        </div>
-      </div>
       -->
 
-      
     </div>
 
     <div id="content">
@@ -299,6 +238,22 @@
       </div>
     </div>
 
+
+    <div id="paginationDiv">
+
+        <ul class="pagination">
+            <li class="disabled "><a href="#!"><img class="paginationImg" src="images/left-arrow.png"></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect "><a href="#!"><img class="paginationImg" src="images/right-arrow.png"></a></li>
+          </ul>
+        
+          <div class="separateLine"></div>
+    </div>
+
     <div id="footer">
       <div id="linksDiv">
         <p id="linksDivHeader">友情链接</p>
@@ -316,7 +271,12 @@
     </div>
 
     <script src="js/underscore-min.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
+    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<!--[if IE 8]>
+
+	<![endif]-->
+
     <script src="js/index.js"></script>
     <script src="js/search.js"></script>
 </body>
