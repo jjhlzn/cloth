@@ -77,67 +77,133 @@ $(document).ready(function(){
     
   });
 
-  $('#searchContainer .s_btn_multiple_select').click(function() {
-    clickMutipleSelectBtn(this);
-  });
-
-
-  $('#searchContainer .s_item').click(function() {
-    //console.log('item click');
-    var selectValue = $(this).html();
-    console.log(selectValue);
-    var searchField = $(this).parent().parent().parent().children().first().html();
-    searchField = searchField.substr(0, searchField.length - 1)
-    console.log(searchField)
-    var father = $(this).parent().parent().parent();
-    addSearchValue(searchField, [selectValue], father)
-    //隐藏这个分类
-    
-    father.hide();
-  });
-
-
-
 });
 
 
-function clickMutipleSelectBtn(btn) {
-    var self = btn;
+function clickSearchItemWhenMutileSelect() {
+  //console.log('clickSearchItemWhenMutileSelect')
 
-    console.log(btn);
+  //console.log(this.tagName)
+ // console.log(this);
+  var checkbox = $(this).parent().children().first();
+  console.log(checkbox)
+
+  if (this.tagName != 'INPUT') {
+    checkbox.prop('checked', !checkbox.prop('checked'));
+  }
+  console.log('checked = ' + checkbox.prop('checked'))
+
+  var ancestor = $(this).parent().parent().parent().parent();
+  console.log(ancestor)
+  setConfirmBtnState(ancestor);
+  
+}
+
+function clickSearchItemWhenNormal() {
+  //console.log('clickSearchItemWhenNormal')
+  console.log(this);
+  var selectValue = $(this).html();
+  console.log(selectValue);
+  var ancestor = $(this).parent().parent().parent().parent();
+  var searchFieldName = ancestor.children().first().html();
+  searchFieldName = searchFieldName.substr(0, searchFieldName.length - 1)
+  console.log("fieldName: " + searchFieldName)
+
+  addSearchValue(searchFieldName, [selectValue], ancestor)
+  //隐藏这个分类
+  
+  ancestor.hide();
+}
+
+function clickMutipleSelectBtn() {
     //console.log($($(this).parent().parent().children()[1]).children())
-    var btnTxtDiv = $(btn).children().first().children().first();
-    var btnImg = $(btn).children().first().children()[1];
-    console.log(btnTxtDiv)
-
-    var searchName = $(btn).parent().parent().children()[0];
-    var searchValues = $(btn).parent().parent().children()[1];
-    var lines = $($(btn).parent().parent().children()[1]).children();
-    if ($(btn).hasClass('expanded')) {  //已经展开了
-      $(btn).removeClass('expanded')
-      for(var i = 0; i < lines.length; i++) {
-        if (i == 0) {
-          $(lines[i]).show();
-        } else {
-          $(lines[i]).hide();
-        }
-      }
-
-      //设置search_field的高度
-      $(searchName).height(28);
-      btnTxtDiv.html('更多&nbsp;');
-      btnImg.src = 'images/down-arrow.png';
-    } else {
-      $(btn).addClass('expanded')
-      Array(lines).forEach(function(item) {
-        $(item).show();
-      });
-
-      //设置search_field的高度
-      $(searchName).height($(searchValues).height());
-      btnTxtDiv.html('收起&nbsp;');
-      btnImg.src = 'images/up-arrow.png';
+    var searchName = $(this).parent().parent().children()[0];
+    var searchValues = $(this).parent().parent().children()[1];
+    var lines = $($(this).parent().parent().children()[1]).children();
+    var ancestor = $(this).parent().parent();
+    
+    $(this).addClass('expanded')
+    for(var i = 0; i < lines.length; i++) {
+      $(lines[i]).show();
     }
+    //设置search_field的高度
+    ancestor.find("input[type='checkbox']").show();
+    ancestor.find(".s_item").off('click').click((clickSearchItemWhenMutileSelect));
+    ancestor.find('.m_select_confirm_div').show();
+    console.log(ancestor.find('.m_select_confirm_div').height())
+    $(searchName).height($(searchValues).height() + ancestor.find('.m_select_confirm_div').height());
+    ancestor.find('.s_btn').hide();
+
+    setSearchFieldToInitial(ancestor);
+}
+
+function setConfirmBtnState(lineDiv) {
+  //console.log(lineDiv.find("input[type='checkbox']"))
+  console.log(lineDiv.find("input[type='checkbox']"))
+
+  var hasChecked = false;
+  lineDiv.find("input[type='checkbox']").each(function(item){
+      if ($(item).prop('checked')) {
+        hasChecked = true;
+      }
+  });
+
+  console.log('hasChecked = ' + hasChecked)
+  console.log(lineDiv.find("input[type='checkbox']:checked").length)
+  if (lineDiv.find("input[type='checkbox']:checked").length > 0) {
+    lineDiv.find('.m_select_div_btn_confirm').removeClass('m_select_div_btn_inactive');
+  } else {
+    lineDiv.find('.m_select_div_btn_confirm').addClass('m_select_div_btn_inactive');
+  }
+}
+
+
+
+function setSearchFieldToInitial(lineDiv) {
+  lineDiv.find("input[type='checkbox']").prop('checked', false);
+  setConfirmBtnState(lineDiv);
+}
+
+function clickConfirmMultipleSelectBtn() {
+  console.log(this);
+  var ancestor = $(this).parent().parent();
+  var searchFieldName = ancestor.children().first().html();
+  searchFieldName = searchFieldName.substr(0, searchFieldName.length - 1);
+  var selectBoxes = ancestor.find("input[type='checkbox']:checked");
+  var values = [];
+  selectBoxes.each(function(index, item) {
+    values.push(item.value);
+  });
+  //console.log(values);
+  addSearchValue(searchFieldName, values, ancestor);
+  closeSearchLineDiv(this)
+
+  ancestor.hide();
+}
+
+function clickCancelMutileSelectBtn() {
+  closeSearchLineDiv(this)
+}
+
+function closeSearchLineDiv(btn) {
+  var searchName = $(btn).parent().parent().children()[0];
+  var searchValues = $(btn).parent().parent().children()[1];
+  var lines = $($(btn).parent().parent().children()[1]).children();
+  var ancestor = $(btn).parent().parent();
+  
+  $(btn).removeClass('expanded')
+  for(var i = 0; i < lines.length; i++) {
+    if (i != 0) {
+      $(lines[i]).hide();
+    }
+  }
+  //设置search_field的高度
+  ancestor.find("input[type='checkbox']").hide();
+  ancestor.find(".s_item").off('click').click(clickSearchItemWhenNormal);
+  ancestor.find('.m_select_confirm_div').hide();
+  console.log($(searchValues).height())
+  $(searchName).height($(searchValues).height() - 8);
+  ancestor.find('.s_btn').show();
 }
 
 function makeMoreLikeButton(text, clazz, imageUrl) {
@@ -164,8 +230,14 @@ function makeSearchField(searchField) {
     searchValuesDiv.append(valueLine);
     var group = groups[i];
     for(var j = 0; j < group.length; j++) {
-      valueLine.append($('<input>', {'type': 'checkbox', 'style': 'display: none;', 'value': group[j]}))
-        .append($('<a>', {'href': '#', 'class': 's_item'}).html(group[j]));
+      var itemDiv = $('<a>', {'href': '#', 'class': 's_item'}).html(group[j]);
+      var checkBox = $('<input>', {'type': 'checkbox', 'style': 'display: none;', 'value': group[j]});
+      valueLine.append($('<div>')
+                          .append(checkBox)
+                          .append(itemDiv));
+      itemDiv.click(clickSearchItemWhenNormal);
+      checkBox.click(clickSearchItemWhenMutileSelect);
+      
     }
   }
 
@@ -177,16 +249,40 @@ function makeSearchField(searchField) {
   }
 
   //多选按钮
+ 
   if (hasMultipleSelect) {
     var multiSelectBtn = makeMoreLikeButton('多选', 's_btn_multiple_select', 'images/plus.png');
-    searchButtonsDiv.append(multiSelectBtn);           
+    multiSelectBtn.click(clickMutipleSelectBtn)
+    searchButtonsDiv.append(multiSelectBtn);        
+
   }
+
 
 
   var searchLine = $('<div>', {'class': 'searchLine'})
                     .append($('<div>', {'class': 'search_field'}).html(searchFieldName+':'))
                     .append(searchValuesDiv)
                     .append(searchButtonsDiv);
+
+  //在多选的时候，确认或取消
+  /*
+  <div class="m_select_confirm_div"> 
+          <div class="m_select_div_btn ">确认</div> 
+          <div class="m_select_div_btn m_select_div_btn_cancel">取消</div>
+        </div>
+  */
+ if (hasMultipleSelect) {
+    var confirmBtn = $('<div>', {'class': 'm_select_div_btn m_select_div_btn_confirm'}).html('确认');
+    var cancelBtn = $('<div>', {'class': 'm_select_div_btn m_select_div_btn_cancel'}).html('取消');
+    var mselectConfirmDiv = $('<div>', {'class': 'm_select_confirm_div', 'style': 'display: none;'})
+                              .append(confirmBtn)
+                              .append(cancelBtn);
+
+    confirmBtn.click(clickConfirmMultipleSelectBtn);
+    cancelBtn.click(clickCancelMutileSelectBtn);
+    searchLine.append(mselectConfirmDiv);
+ }
+                 
 
   return searchLine;
 }
@@ -218,7 +314,7 @@ function addSearchValue(searchFieldName, selectValues, father) {
     $(this).remove();
     father.show();
   });                                                          
-  console.log(div)
+  //console.log(div)
 
   div.appendTo('#seletedValuesDiv');
 }

@@ -33,8 +33,17 @@
   padding-left: 15px;
   width: 900px;
   float: left;
-
   border-top: 1px solid lightgray;
+}
+
+
+.m_select_confirm_div {
+  margin-left: 400px;
+  padding-top: 0px;
+  height: 26px;
+  float: left;
+  width: 400px;
+  /* background-color: red;  */
 }
 
 .search_buttons {
@@ -140,3 +149,27 @@ a.s_btn:hover {
   border: none;
 }
 /***************************************************************************/
+
+
+.m_select_confirm_div .m_select_div_btn {
+  float: left;
+  font-size: 12px;
+  margin-right: 20px;
+  background-color: #C2000D;
+  color: white;
+  padding: 4px 12px;
+}
+
+.m_select_confirm_div .m_select_div_btn_cancel {
+  background-color: #f2f2f2;
+  color: #737373;
+}
+
+.m_select_confirm_div .m_select_div_btn_inactive {
+  background-color: rgb(250, 245, 245);
+  color: #e6e6e6;
+}
+
+div.m_select_div_btn:hover {
+  cursor: pointer;
+}
